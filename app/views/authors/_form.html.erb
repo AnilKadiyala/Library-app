@@ -1,0 +1,12 @@
+<%= simple_form_for @author, :html => { :class => 'form-horizontal' } do |f| %>
+<div class= 'fieldd'>
+  <%= f.input :name%>
+</div>
+<b>Books</b>
+  <%= collection_select(:book, :book_ids, Book.all, :id, :name,{:include_blank => 'None'},
+{:multiple => true, :name=>'book_ids[]',:selected => 0,class: "form-control"}) %>
+<br/>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                authors_path, :class => 'btn btn-default' %>
+<% end %>
